@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Never cache the dashboard page itself: a refreshed upload must reach everyone
+# the next time they open it, not after a browser cache expires.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
